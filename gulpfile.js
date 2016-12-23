@@ -18,13 +18,13 @@ var SRC = "./src";
 var DEST = "./_site";
 
 gulp.task("html", function() {
-    return gulp.src(SRC + "/html/*.html")
+    return gulp.src(SRC + "/*.html")
     //.pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(DEST));
 });
 
 gulp.task("sass", function () {
-    return gulp.src(SRC + "/sass/styles.scss")
+    return gulp.src(SRC + "/styles.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(autoprefixer({
         browsers: [">1%"],
@@ -34,14 +34,14 @@ gulp.task("sass", function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest(DEST + "/assets/css/"))
+    .pipe(gulp.dest(DEST))
     .pipe(browserSync.stream());
 });
 
 gulp.task("scripts", function() {
     // set up the browserify instance on a task basis
     var b = browserify({
-        entries: SRC + "/js/scripts.js",
+        entries: SRC + "/scripts.js",
         debug: true
     });
 
@@ -56,7 +56,7 @@ gulp.task("scripts", function() {
         .pipe(uglify())
         .on("error", gutil.log)
     .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(DEST + "/assets/js/"));
+    .pipe(gulp.dest(DEST));
 });
 
 gulp.task("browser-sync", () => {
@@ -70,18 +70,14 @@ gulp.task("browser-sync", () => {
 });
 
 gulp.task("copy", function () {
-    gulp.src(SRC + "/fonts/*")
-    .pipe(gulp.dest(DEST + "/assets/fonts"))
-    gulp.src(SRC + "/html/google*.html")
-    .pipe(gulp.dest(DEST))
     gulp.src(SRC + "/favicons/*")
-    .pipe(gulp.dest(DEST + "/assets/favicons"))
+    .pipe(gulp.dest(DEST + "/favicons"))
 });
 
 gulp.task("watch", function () {
-    gulp.watch(SRC + "/html/**/*.html", ["html"]).on("change", browserSync.reload);
-    gulp.watch(SRC + "/sass/**/*.scss", ["sass"]);
-    gulp.watch(SRC + "/js/**/*.js", ["scripts"]).on("change", browserSync.reload);
+    gulp.watch(SRC + "/**/*.html", ["html"]).on("change", browserSync.reload);
+    gulp.watch(SRC + "/**/*.scss", ["sass"]);
+    gulp.watch(SRC + "/**/*.js", ["scripts"]).on("change", browserSync.reload);
 });
 
 gulp.task("default", ["watch", "html", "copy", "scripts", "sass", "browser-sync"]);
