@@ -13,3 +13,15 @@ html {
 .title {
   font-size: 5rem;
 }
+
+// media queries
+@media (max-width: 28rem) {
+  .title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 17.5rem) {
+  .title {
+    font-size: 2rem;
+  }
+}
