@@ -5,8 +5,8 @@
 # to a gh-pages branch
 
 # set your build information here, the script will take care of anything else
-SOURCE_BRANCH="develop"
-TARGET_BRANCH="master"
+SOURCE_BRANCH="master"
+TARGET_BRANCH="gh-pages"
 DIRECTORY="_site"
 GH_REF="github.com/ArnaudWeyts/coolmeme"
 GH_USERNAME="Block-Bot"
