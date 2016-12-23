@@ -70,8 +70,8 @@ gulp.task("browser-sync", () => {
 });
 
 gulp.task("copy", function () {
-    gulp.src(SRC + "/favicons/*")
-    .pipe(gulp.dest(DEST + "/favicons"))
+    /*gulp.src(SRC + "/favicons/*")
+    .pipe(gulp.dest(DEST + "/favicons"))*/
 });
 
 gulp.task("watch", function () {
