@@ -1,18 +1,19 @@
 "use strict";
 
 var gulp = require("gulp"),
-rename = require("gulp-rename"),
-browserify = require("browserify"),
-source = require("vinyl-source-stream"),
-buffer = require("vinyl-buffer"),
-sourcemaps = require("gulp-sourcemaps"),
-gutil = require("gulp-util"),
-htmlmin = require("gulp-htmlmin"),
-sass = require("gulp-sass"),
-autoprefixer = require("gulp-autoprefixer"),
-cssnano = require("gulp-cssnano"),
-uglify = require("gulp-uglify"),
-browserSync = require("browser-sync").create();
+    rename = require("gulp-rename"),
+    browserify = require("browserify"),
+    source = require("vinyl-source-stream"),
+    buffer = require("vinyl-buffer"),
+    sourcemaps = require("gulp-sourcemaps"),
+    babel = require("gulp-babel"),
+    gutil = require("gulp-util"),
+    htmlmin = require("gulp-htmlmin"),
+    sass = require("gulp-sass"),
+    autoprefixer = require("gulp-autoprefixer"),
+    cssnano = require("gulp-cssnano"),
+    uglify = require("gulp-uglify"),
+    browserSync = require("browser-sync").create();
 
 var SRC = "./src";
 var DEST = "./_site";
@@ -53,6 +54,7 @@ gulp.task("scripts", function() {
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
+        .pipe(babel())
         .pipe(uglify())
         .on("error", gutil.log)
     .pipe(sourcemaps.write("./"))
@@ -72,6 +74,8 @@ gulp.task("browser-sync", () => {
 gulp.task("copy", function () {
     /*gulp.src(SRC + "/favicons/*")
     .pipe(gulp.dest(DEST + "/favicons"))*/
+    gulp.src(SRC + '/voice.mp3')
+    .pipe(gulp.dest(DEST));
 });
 
 gulp.task("watch", function () {

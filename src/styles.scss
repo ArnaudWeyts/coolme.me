@@ -1,10 +1,15 @@
+html, body {
+  overflow: auto;
+}
+
 html {
-  font-size: 62.5%;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 body {
   margin: 0;
+  background-color: #263238;
+  color: #FFF;
 }
 
 .container {
@@ -15,17 +20,13 @@ body {
 }
 
 .title {
-  font-size: 5rem;
-}
-
-// media queries
-@media (max-width: 28rem) {
-  .title {
-    font-size: 3rem;
-  }
-}
-@media (max-width: 17.5rem) {
-  .title {
-    font-size: 2rem;
+  font-size: 10vw;
+  div {
+    svg {
+      width: 10vw;
+    }
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 4s ease;
   }
 }
