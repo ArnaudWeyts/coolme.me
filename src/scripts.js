@@ -11,7 +11,7 @@ function toggleGrow() {
     // scales emoji and centers it on the page
     this.style.transform = `
       translateX(-${this.parentElement.offsetWidth / 2 - this.offsetWidth / 2}px)
-      scale(5)
+      scale(4)
       rotate(1080deg)
     `;
   } else {
