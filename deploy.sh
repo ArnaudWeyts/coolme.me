@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# deploy script for a jekyll blog
+# deploy script for any website using travis
 # heavily based on: https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 # this script pushes a post-build directory to a different branch, this is useful for deploying
 # to a gh-pages branch
@@ -8,7 +8,7 @@
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 DIRECTORY="_site"
-GH_REF="github.com/ArnaudWeyts/coolmeme"
+GH_REF="github.com/ArnaudWeyts/coolme.me"
 GH_USERNAME="Block-Bot"
 GH_USERMAIL="bot@weyts.xyz"
 
