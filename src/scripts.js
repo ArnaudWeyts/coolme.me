@@ -14,6 +14,7 @@ function toggleGrow() {
       scale(4)
       rotate(1080deg)
     `;
+    audio.currentTime = 0;
   } else {
     this.style.transform = '';
   }
