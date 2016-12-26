@@ -20,7 +20,7 @@ var DEST = "./_site";
 
 gulp.task("html", function() {
     return gulp.src(SRC + "/*.html")
-    //.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(DEST));
 });
 
