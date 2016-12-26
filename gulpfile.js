@@ -77,6 +77,8 @@ gulp.task("copy", function () {
     .pipe(gulp.dest(DEST + "/favicons"))*/
     gulp.src(SRC + '/voice.mp3')
     .pipe(gulp.dest(DEST));
+    gulp.src(SRC + '/google*.html')
+    .pipe(gulp.dest(DEST));
 });
 
 gulp.task("watch", function () {
